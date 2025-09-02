@@ -287,7 +287,7 @@ class BertLayerBetterTransformer(BetterTransformerBaseLayer, nn.Module):
 
         self.validate_bettertransformer()
 
-    def forward(self, hidden_states, attention_mask, *_):
+    def forward(self, hidden_states, attention_mask,*args, **kwargs):
         # No check on output_attentions here as roformer relies on BertLayerBetterTransformer but does not pass output_attentions as keyword argument.
         if not self.training and not torch._C._is_any_autocast_enabled():
             if hidden_states.is_nested:
